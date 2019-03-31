@@ -85,15 +85,16 @@
         .ac-day {
             box-sizing: border-box;
             width: calc(100% / 53 - 2px);
-            height: 10px;
             background-color: #808080;
             margin: 1px;
             display: inline-block;
             border-radius: 1px;
+            padding-top: calc(100% / 53 - 2px);
+            height: 0px;
         }
 
         .ac-day:hover {
-            border: solid white 1px;
+            --border: solid white 1px;
             cursor: pointer;
         }
 
