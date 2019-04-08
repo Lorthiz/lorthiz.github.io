@@ -8,10 +8,7 @@ export default class GlassBallElement extends HTMLElement {
         this.id = this.id || UUIDGenerator.generateId();
         this.effectColor = this.getAttribute('effect-color') || '#000000';
         this.fillColor = this.getAttribute('fill-color') || '#FFFFFF';
-        // this.radius = window.getComputedStyle(this).width || 200;
         this.radius = window.getComputedStyle(this).width !== 'auto' ? window.getComputedStyle(this).width : 200;
-        // this.radius = conf.smth || 200;
-        console.log(this.radius);
         this.fillLevel = conf.fillLevel || 1.0;
         const shadowTemplate = this.attachShadow({mode: 'open'});
         shadowTemplate.innerHTML = this.fetchShadowDOMTemplate();
@@ -135,4 +132,4 @@ export default class GlassBallElement extends HTMLElement {
 }
 
 
-window.customElements.define('app-drawer', GlassBallElement);
+window.customElements.define('glass-ball-element', GlassBallElement);
