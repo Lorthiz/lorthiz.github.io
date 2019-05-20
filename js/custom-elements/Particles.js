@@ -19,7 +19,7 @@ export default class RadialParticleAnimationElement extends HTMLElement {
     }
 
     start() {
-        if (this.intervalId) return;
+        if (this.intervalId || this.width === 0 || this.height === 0) return;
         this.intervalId = setInterval(this.setBackground.bind(this), this.interval);
     }
 

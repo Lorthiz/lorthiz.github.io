@@ -47,12 +47,21 @@ export default class GlassBallElement extends HTMLElement {
     fetchShadowDOMTemplate() {
         return `
             <style>
+                :host {
+                    width: inherit;
+                    height: inherit;
+                }
+                .svg {
+                    width: inherit;
+                    height: inherit;
+                }
                 .glass-ball-part {
                     position: absolute;
+                    height: 100%;
                 }
                 particle-radial-animation {
-                    width: ${this.radius}px;
-                    height: ${this.radius}px;
+                    width: inherit;
+                    height: inherit;
                     color: ${this.effectColor || this.fillColor};
                 }
             </style>
@@ -78,12 +87,6 @@ export default class GlassBallElement extends HTMLElement {
             return `cx="${posX}" cy="${posY}" rx="${this.radius * 0.275}" ry="${this.radius * 0.475}" fill="${this.fillColor}" opacity="0.1" transform="rotate(${rot} ${posX} ${posY})"`;
         };
         return `
-              <style>
-                .svg {
-                    width: 100%;
-                    height: 100%;
-                }
-              </style>
               <div style="width:${this.radius}px; height:${this.radius}px">
                <svg class="glass-ball-part svg">
                   <defs>
@@ -119,7 +122,7 @@ export default class GlassBallElement extends HTMLElement {
                </svg>
                <particle-radial-animation class="glass-ball-part"></particle-radial-animation>
                <canvas height="${this.radius}" width="${this.radius}" id="${this.id}-canvas" class="glass-ball-part"></canvas>
-               <svg width="${this.radius}" height="${this.radius}" class="glass-ball-part">
+               <svg class="glass-ball-part">
                   <circle cx="${this.radius / 2}" cy="${this.radius / 2}" r="${this.radius / 2}" fill="#ACACAC" opacity="0.1"/>
                   <g ${clip()}">0
                      <ellipse ${fetchEllipseAttributes(0.6, 0.35, 0.25, 0.2)} fill="#FFFFFF" opacity="1" ${filter()} transform="rotate(30 ${this.radius * 0.6} ${this.radius * 0.35})"/>

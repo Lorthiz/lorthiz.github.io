@@ -13,7 +13,8 @@
             width: 100%;
             height: 100%;
             margin: 0;
-            background-color: #606060;
+            background: black url(graphics/WebsiteBackground.png) bottom;
+            background-size: cover;
         }
 
         p {
@@ -23,36 +24,40 @@
             padding: 5px;
         }
 
-        .header {
+        .legendary {
             font-family: 'Ruslan Display', cursive;
             padding: 10px;
-        }
-
-        .legendary {
             font-size: 34px;
             color: #35AE8C;
         }
 
         .main {
-            margin: 0 20%;
-            background-color: #303030;
+            margin: 0 25%;
+            background: url(graphics/WebsiteMainScroll.png) bottom;
+            background-size: cover;
             height: 100%;
+            padding: 0 3%;
         }
 
         .content-scroll {
-            height: calc(100% - 230px);
+            top: calc(5% + 150px);
+            height: calc(90% - 300px);
             overflow-x: hidden;
             overflow-y: auto;
+            position: relative;
         }
 
         .content {
-            margin: 0 10%;
+            margin: 0 1%;
         }
 
         .container {
             width: 70%;
             display: inline-flex;
             justify-content: space-between;
+            bottom: 70px;
+            position: relative;
+            height: 200px;
         }
 
         .buttons {
@@ -61,28 +66,116 @@
             display: flex;
             align-content: normal;
             align-self: flex-end;
-            bottom: -15px;
         }
 
-        .footer {
+        .footer-header {
             width: 100%;
+            height: 150px;
             z-index: 9999;
             display: inline-flex;
             justify-content: space-evenly;
-            bottom: 15px;
             position: fixed;
+            padding: 0;
+        }
+
+        .footer {
+            bottom: 0;
+        }
+
+        .header {
+        }
+
+        .list-item-font {
+            font-family: 'Ruslan Display', cursive;
+            padding: 10px 5px 5px;
+            font-size: 1em;
+            color: #35AE8C;
+        }
+
+        .list-item-selected {
+            font-family: 'Ruslan Display', cursive;
+            padding: 10px 5px 5px;
+            font-size: 1.5em;
+            color: #35AE8C;
+            text-decoration: underline;
+        }
+
+        .list-item {
+            width: fit-content;
+            height: 100%;
+            position: relative;
+            left: -20px;
+            transition: left ease 0.5s;
+            background-image: url(graphics/NavigationItem.png);
+            display: block;
+            margin: 20px 0;
+            background-position: right;
+            padding-left: 40px;
+            padding-right: 40px;
+            white-space: nowrap;
+            background-size: cover;
+        }
+
+        .list-item:hover {
+            left: 0;
+            color: #AB1333;
+            --color: red;
+            cursor: pointer;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
     </style>
+    <script>
+        function selectMenuItem(event) {
+            [...event.target.parentElement.children].forEach(item => {
+                item.classList.add('list-item-font');
+                item.classList.remove('list-item-selected');
+
+            });
+            event.target.classList.remove('list-item-font');
+            event.target.classList.add('list-item-selected');
+        }
+    </script>
 </head>
 <body>
+<div class="header footer-header">
+    <div class="buttons">
+        <img src="graphics/corner-bottom.svg" style="    height: 150px;
+transform: scaleY(-1);
+
+position: relative;
+width: auto;
+display: block;">
+        <div style="    height: 150px;
+background-color: #484848;
+width: 100%;">
+        </div>
+        <img src="graphics/corner-bottom.svg" style="transform: scaleX(-1) scaleY(-1);
+height: 150px;
+width: 78px;
+display: block;">
+    </div>
+</div>
+<div class="navigation">
+    <a class="list-item list-item-selected" onclick="selectMenuItem(event)">Overview</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)">Skills</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)">Work experience</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)">Personal projects</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)">Interests</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)">About me</a>
+</div>
 <div class="main">
     <div class="content-scroll">
         <div class="content">
             <input type="range" min="0" max="100" value="100" oninput="change(event, 'hp')">
             <input type="range" min="0" max="100" value="100" oninput="change(event, 'mana')">
-            <activity-calendar></activity-calendar>
-            <p class="header legendary">
+            <activity-calendar style="width: 90%"></activity-calendar>
+            <p class="legendary">
                 Mighty Java Streaming Blade (Java 1.8)
             </p>
             <p>
@@ -202,7 +295,7 @@
     </div>
 </div>
 
-<div class="footer">
+<div class="footer footer-header">
     <div class="buttons">
         <img src="graphics/corner-bottom.svg" style="    height: 150px;
         position: relative;
@@ -219,16 +312,13 @@
     </div>
     <div class="container">
         <div>
-            <!--<img src="graphics/wings.svg" style="position:absolute; height: 300px; bottom:0; transform: translate(-20%);">-->
             <glass-ball-element id="hp" fill-color="#FF0038" , effect-color="#FF0038"></glass-ball-element>
         </div>
-
-
         <div>
-            <!--<img src="graphics/wings.svg" style="position:absolute; height: 300px; bottom:0; transform: translate(-20%) scaleX(-1);">-->
+            <img src="graphics/ManaBallWyrm/slice2.png" style="position:absolute; transform: translate(-7%,-1%);">
             <glass-ball-element id="mana" fill-color="#00FFBF" , effect-color="#00FFBF"></glass-ball-element>
+            <img src="graphics/ManaBallWyrm/slice1.png" style="position:absolute; transform: translate(-3%, -120%)">
         </div>
-
     </div>
 
 </div>
