@@ -6,14 +6,14 @@ export default class CalendarService {
     }
 
     fetchGitLabActivity(username) {
-        return fetch(this.corsAnywhere + this.GitLabUrl.replace('{0}', username))
+        return fetch(this.corsAnywhere + this.GitLabUrl.replace('{0}', username), CalendarService.fetchHeaders())
             .then(resolve => resolve.json())
             .then(data => Promise.resolve(CalendarService.createJsonData('GitLab', data)))
             .catch(() => Promise.resolve(CalendarService.createJsonData('GitLab', {})));
     }
 
     fetchGitHubActivity(username) {
-        return fetch(this.corsAnywhere + this.GitHubUrl.replace('{0}', username))
+        return fetch(this.corsAnywhere + this.GitHubUrl.replace('{0}', username), CalendarService.fetchHeaders())
             .then(resolve => resolve.text())
             .then(data => CalendarService.parseGitHubCalendar(data))
             .then(data => Promise.resolve(CalendarService.createJsonData('GitHub', data)))
@@ -21,12 +21,15 @@ export default class CalendarService {
     }
 
     fetchCustom(customSourceName, customSourceLink) {
-        return fetch(this.corsAnywhere + customSourceLink)
+        return fetch(this.corsAnywhere + customSourceLink, CalendarService.fetchHeaders())
             .then(resolve => resolve.json())
             .then(data => Promise.resolve(CalendarService.createJsonData(customSourceName, data)))
             .catch(() => Promise.resolve(CalendarService.createJsonData(customSourceName, {})));
     }
-
+    static fetchHeaders() {
+        return {
+        };
+    }
     static createJsonData(name, data) {
         return {
             'Service': name,

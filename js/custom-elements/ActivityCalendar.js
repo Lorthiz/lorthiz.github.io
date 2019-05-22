@@ -1,6 +1,6 @@
 import CalendarService from '../services/CalendarService'
 
-class ActivityCalendar extends HTMLElement {
+export default class ActivityCalendar extends HTMLElement {
     constructor() {
         super();
         this.calendarService = new CalendarService();
@@ -180,6 +180,7 @@ class ActivityCalendar extends HTMLElement {
 
     createEmptyCalendar() {
         const cal = this.shadowRoot.getElementById('calendar');
+        this.shadowRoot.getElementById('allCommits').innerHTML = "Loading...";
         for (let i = 0; i < 7; ++i) {
             const date = new Date();
             date.setDate(date.getDate() - 370 + i);

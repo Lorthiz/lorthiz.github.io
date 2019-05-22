@@ -21,14 +21,33 @@
             text-align: justify;
             font-family: 'Philosopher', sans-serif;
             color: #808080;
-            padding: 5px;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+        .link {
+            text-align: justify;
+            font-family: 'Philosopher', sans-serif;
+            color: #35AE8C;
+        }
+
+        .link:hover {
+            color: #83DAC2;
+            cursor: pointer;
+        }
+
+        span {
+            font-weight: bolder;
+            color: #35AE8C;
         }
 
         .legendary {
             font-family: 'Ruslan Display', cursive;
-            padding: 10px;
             font-size: 34px;
             color: #35AE8C;
+            text-align: center;
+            text-decoration: underline;
         }
 
         .main {
@@ -118,8 +137,7 @@
 
         .list-item:hover {
             left: 0;
-            color: #AB1333;
-            --color: red;
+            color: #83DAC2;
             cursor: pointer;
         }
 
@@ -129,18 +147,25 @@
             transform: translateY(-50%);
         }
 
+        .icon-bar {
+            height: 64px;
+            width: 60%;
+            margin: 140px 0;
+            position: relative;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .icon {
+            width: 64px;
+            height: 64px;
+        }
+
     </style>
     <script>
-        function selectMenuItem(event) {
-            [...event.target.parentElement.children].forEach(item => {
-                item.classList.add('list-item-font');
-                item.classList.remove('list-item-selected');
 
-            });
-            event.target.classList.remove('list-item-font');
-            event.target.classList.add('list-item-selected');
-        }
     </script>
+
 </head>
 <body>
 <div class="header footer-header">
@@ -161,135 +186,16 @@ width: 78px;
 display: block;">
     </div>
 </div>
-<div class="navigation">
-    <a class="list-item list-item-selected" onclick="selectMenuItem(event)">Overview</a>
-    <a class="list-item list-item-font" onclick="selectMenuItem(event)">Skills</a>
-    <a class="list-item list-item-font" onclick="selectMenuItem(event)">Work experience</a>
-    <a class="list-item list-item-font" onclick="selectMenuItem(event)">Personal projects</a>
-    <a class="list-item list-item-font" onclick="selectMenuItem(event)">Interests</a>
-    <a class="list-item list-item-font" onclick="selectMenuItem(event)">About me</a>
+<div class="navigation" id="navigation">
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)" id="overview">Overview</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)" id="skills">Skills</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)" id="experience">Experience</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)" id="interests">Interests</a>
+    <a class="list-item list-item-font" onclick="selectMenuItem(event)" id="about-me">About me</a>
 </div>
 <div class="main">
     <div class="content-scroll">
-        <div class="content">
-            <input type="range" min="0" max="100" value="100" oninput="change(event, 'hp')">
-            <input type="range" min="0" max="100" value="100" oninput="change(event, 'mana')">
-            <activity-calendar style="width: 90%"></activity-calendar>
-            <p class="legendary">
-                Mighty Java Streaming Blade (Java 1.8)
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget lacus luctus, dictum tortor
-                euismod, feugiat tellus. Vivamus nec volutpat lectus. Nam semper mattis eros. Curabitur metus diam,
-                sagittis
-                euismod mollis sit amet, egestas et nisl.
-                Aliquam tristique mi eros, eu pretium orci ornare non. Etiam eu libero non sem ultrices volutpat id ut
-                felis. Nulla vitae odio neque.
-            </p>
+        <div class="content" id="main-content">
 
         </div>
     </div>
@@ -314,6 +220,17 @@ display: block;">
         <div>
             <glass-ball-element id="hp" fill-color="#FF0038" , effect-color="#FF0038"></glass-ball-element>
         </div>
+        <div class="icon-bar">
+            <img src="graphics/Icons/JavaIcon.png" class="icon">
+            <img src="graphics/Icons/CppIcon.png" class="icon">
+            <img src="graphics/Icons/JSIcon.png" class="icon">
+            <img src="graphics/Icons/TSIcon.png" class="icon">
+            <img src="graphics/Icons/CSSIcon.png" class="icon">
+            <img src="graphics/Icons/HTMLIcon.png" class="icon">
+            <img src="graphics/Icons/JetBrainsIcon.png" class="icon">
+            <img src="graphics/Icons/AffinityDesignerIcon.png" class="icon">
+        </div>
+
         <div>
             <img src="graphics/ManaBallWyrm/slice2.png" style="position:absolute; transform: translate(-7%,-1%);">
             <glass-ball-element id="mana" fill-color="#00FFBF" , effect-color="#00FFBF"></glass-ball-element>
