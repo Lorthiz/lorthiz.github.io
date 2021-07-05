@@ -1,30 +1,45 @@
-var path = require('path');
+const {resolve} = require('path');
 
-module.exports = {
-    entry: './js/main.js',
-    output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: 'bundle.js'
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+
+const config = {
+    entry: {
+        main: resolve('./src/index.js'),
     },
-
     module: {
         rules: [
             {
-                test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
+                test: /\.js$/,
+                loader: 'source-map-loader',
+                enforce: 'pre'
+            },
+            {
+                test: /\.html$/,
+                use: 'html-loader'
+            },
+            {
+                test: /\.(css|scss)$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                use: 'url-loader?limit=25000'
             }
         ]
     },
-
-    devServer: {
-        contentBase: './dist'
+    optimization: {
+        minimize: true
     },
-    // mode: 'development'
-    mode: 'production'
+    resolve: {
+        extensions: ['.js', '.ts', '.tsx']
+    },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: './src/index.html',
+            filename: './index.html'
+        }),
+    ]
 };
+
+module.exports = config;
